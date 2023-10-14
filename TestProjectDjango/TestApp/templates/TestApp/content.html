@@ -1,0 +1,23 @@
+{%extends 'TestApp/base_layout.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'TestApp/css/content.css' %}">
+{% endblock %}
+{% block header %}
+{% include 'TestApp/header.html' %}
+{% endblock %}
+{% block content %}
+<!-- здесь контент -->
+<form class="decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h3>Написать нам</h3>
+        <input type="text" placeholder="Username">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Сообщение..." rows="3"></textarea>
+        <input type="submit" value="Отправить">
+    </div>
+</form>
+{% endblock %}

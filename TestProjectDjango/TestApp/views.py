@@ -1,13 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
+from .models import News
 
 
 def index(request):
-    return render(request, 'TestApp/index.html', {"title": "Head from index"})
+    news = News.objects.filter(is_published=True)
+    return render(request, 'TestApp/index.html', {'news': news})
 
 
 def about(request):
     return render(request, 'TestApp/about.html')
 
+
+def detail_news(request, news_id):
+    # news = News.objects.get(pk=news_id)
+    news = get_object_or_404(News, pk=news_id)
+    return render(request, 'TestApp/detail_news.html', {'detail_news': news})
 
 def content(request):
     return render(request, 'TestApp/content.html')

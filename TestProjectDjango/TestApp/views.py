@@ -4,7 +4,7 @@ from .models import News
 
 
 def index(request):
-    news = News.objects.filter(is_published=True)
+    news = News.objects.all()
     return render(request, 'TestApp/index.html', {'news': news})
 
 
@@ -13,9 +13,9 @@ def about(request):
 
 
 def detail_news(request, news_id):
-    # news = News.objects.get(pk=news_id)
     news = get_object_or_404(News, pk=news_id)
     return render(request, 'TestApp/detail_news.html', {'detail_news': news})
+
 
 def content(request):
     return render(request, 'TestApp/content.html')
